@@ -1,66 +1,39 @@
 import React from 'react';
 
 const habilidades = [
-  { categoria: 'Lenguajes', items: [
-    { nombre: 'JavaScript', nivel: 4 },
-    { nombre: 'Python', nivel: 3 },
-    { nombre: 'SQL', nivel: 3 },
-    { nombre: 'HTML/CSS', nivel: 4 },
-  ]},
-  { categoria: 'Frameworks y librerías', items: [
-    { nombre: 'React', nivel: 4 },
-    { nombre: 'Tailwind CSS', nivel: 2 },
-    { nombre: 'Node-RED', nivel: 4 },
-    { nombre: 'FastAPI', nivel: 2 },
-    { nombre: 'Axios', nivel: 2 },
-    { nombre: 'Socket.IO', nivel: 2 },
-  ]},
-  { categoria: 'Bases de datos', items: [
-    { nombre: 'PostgreSQL', nivel: 2 },
-    { nombre: 'MySQL', nivel: 2 },
-  ]},
-  { categoria: 'Herramientas y plataformas', items: [
-    { nombre: 'Git / GitHub', nivel: 3 },
-    { nombre: 'Vercel', nivel: 2 },
-    { nombre: 'Modbus', nivel: 3 },
-    { nombre: 'Elipse Power', nivel: 2 },
-    { nombre: 'PLC (general)', nivel: 3 },
-    { nombre: 'Telegram API / bots', nivel: 4 },
-    { nombre: 'Node.js', nivel: 2 },
-    { nombre: 'AutoCAD', nivel: 4 },
-  ]},
+  { nombre: 'JavaScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+  { nombre: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  { nombre: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  { nombre: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { nombre: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
+  { nombre: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
+  { nombre: 'HTML5', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { nombre: 'CSS3', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  { nombre: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg' },
+  { nombre: 'GitHub', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg' },
+  { nombre: 'FastAPI', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
 ];
-
-function BarraHabilidad({ nivel }) {
-  const porcentaje = (nivel / 5) * 100;
-  return (
-    <div className="w-full bg-gray-200 rounded h-1.5">
-      <div
-        className="bg-blue-600 h-1.5 rounded"
-        style={{ width: `${porcentaje}%` }}
-      />
-    </div>
-  );
-}
 
 export default function Habilidades() {
   return (
-    <section id="habilidades" className="py-10 px-4 max-w-3xl mx-auto">
-      <h2 className="text-2xl font-semibold mb-6 text-center">Habilidades</h2>
-      <div className="space-y-6">
-        {habilidades.map((grupo, idx) => (
-          <div key={idx}>
-            <h3 className="text-md font-semibold mb-3 text-blue-700">{grupo.categoria}</h3>
-            <div className="space-y-3">
-              {grupo.items.map((hab, i) => (
-                <div key={i}>
-                  <div className="flex justify-between text-sm text-gray-700 mb-0.5">
-                    <span>{hab.nombre}</span>
-                    <span className="text-gray-500">{hab.nivel}/5</span>
-                  </div>
-                  <BarraHabilidad nivel={hab.nivel} />
-                </div>
-              ))}
+    <section id="habilidades" className="py-10 px-4 max-w-4xl mx-auto">
+      <h2 className="text-2xl font-semibold mb-8 text-center text-white">Habilidades</h2>
+      <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-6 justify-items-center">
+        {habilidades.map((habilidad, index) => (
+          <div 
+            key={index}
+            className="group relative p-3 bg-white bg-opacity-10 backdrop-blur-sm rounded-lg hover:bg-opacity-20 transition-all duration-300 hover:scale-110"
+          >
+            <img
+              src={habilidad.logo}
+              alt={habilidad.nombre}
+              className="w-12 h-12 object-contain filter transition-all duration-300 group-hover:drop-shadow-lg"
+            />
+            {/* Tooltip */}
+            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-gray-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+              {habilidad.nombre}
+              {/* Flecha del tooltip */}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900"></div>
             </div>
           </div>
         ))}

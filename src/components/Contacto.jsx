@@ -5,7 +5,7 @@ export default function Contacto() {
   return (
     <section id="contacto" className="py-12 px-6 max-w-xl mx-auto">
       <h2 className="text-2xl font-semibold mb-4 text-center">Contacto</h2>
-      <p className="text-center text-gray-600 mb-4">
+      <p className="text-center text-white-600 mb-4">
         ¿Querés trabajar conmigo o charlar sobre un proyecto? Escribime:
       </p>
 
@@ -18,16 +18,14 @@ export default function Contacto() {
         </a>
       </div>
 
-      <div className="flex justify-center gap-6 text-2xl text-gray-700">
-        <a href="https://github.com/tuusuario" target="_blank" rel="noopener noreferrer" className="hover:text-black">
+      <div className="flex justify-center gap-6 text-2xl text-black-700">
+        <a href="https://github.com/Franegeaa" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600">
           <FaGithub />
         </a>
-        <a href="https://linkedin.com/in/tuusuario" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700">
+        <a href="https://www.linkedin.com/in/franciscoegea/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-700">
           <FaLinkedin />
         </a>
-        <a href="https://t.me/tuusuario" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500">
-          <FaTelegramPlane />
-        </a>
+        
       </div>
     </section>
   );
