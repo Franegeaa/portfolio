@@ -13,7 +13,6 @@ const Proyectos = () => {
       titulo: "Bot de Control para Planta Industrial",
       descripcion: "Sistema de monitoreo y control de bombeo para planta industrial desarrollado en Node-RED con notificaciones por Telegram.",
       tecnologias: ["Node-RED", "Telegram API", "IoT", "Automation"],
-      imagen: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500&h=300&fit=crop&crop=center",
       enlace: "https://github.com/Franegeaa/ProyectoNode-Red",
       tieneModal: true,
       imagenes: [
@@ -43,28 +42,24 @@ const Proyectos = () => {
       titulo: "Plataforma Emprende",
       descripcion: "Aplicación full-stack para emprendedores con frontend en React y backend completo. Proyecto colaborativo con gestión de usuarios.",
       tecnologias: ["React", "JavaScript", "Node.js", "Full-Stack"],
-      imagen: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop&crop=center",
       enlace: "https://github.com/Franegeaa/emprende-frontend"
     },
     {
       titulo: "Sistema de Gestión de Stock",
       descripcion: "Aplicación completa para control de inventarios con frontend y backend separados. Gestión de productos y stock en tiempo real.",
       tecnologias: ["JavaScript", "HTML", "CSS", "Full-Stack"],
-      imagen: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&h=300&fit=crop&crop=center",
       enlace: "https://github.com/Franegeaa/stock-app"
     },
     {
       titulo: "Proyecto TPI React Deploy",
       descripcion: "Proyecto colaborativo universitario desarrollado en React con deployment automatizado. Trabajo en equipo con múltiples contribuidores.",
       tecnologias: ["React", "JavaScript", "CSS", "GitHub Actions"],
-      imagen: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop&crop=center",
       enlace: "https://github.com/Franegeaa/react-deploy-tpi"
     },
     {
       titulo: "REST API Deploy",
       descripcion: "API REST desarrollada en Node.js con deployment en FL0. Backend robusto para aplicaciones web con arquitectura escalable.",
       tecnologias: ["Node.js", "API", "FL0", "JavaScript"],
-      imagen: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=500&h=300&fit=crop&crop=center",
       enlace: "https://github.com/Franegeaa/rest-api-deploy"
     }
   ];
