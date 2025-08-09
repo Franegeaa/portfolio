@@ -13,7 +13,7 @@ const Proyectos = () => {
       titulo: "Bot de Control para Planta Industrial",
       descripcion: "Sistema de monitoreo y control de bombeo para planta industrial desarrollado en Node-RED con notificaciones por Telegram.",
       tecnologias: ["Node-RED", "Telegram API", "IoT", "Automation"],
-      imagen: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=500&h=300&fit=crop&crop=center",
+      imagen: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&h=300&fit=crop&crop=center",
       enlace: "https://github.com/Franegeaa/ProyectoNode-Red",
       tieneModal: true,
       imagenes: [
@@ -86,23 +86,19 @@ const Proyectos = () => {
   };
 
   const nextImage = () => {
-    if (selectedProject && selectedProject.imagenes) {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === selectedProject.imagenes.length - 1 ? 0 : prevIndex + 1
+    if (selectedProject?.imagenes) {
+      setCurrentImageIndex((prev) => 
+        prev === selectedProject.imagenes.length - 1 ? 0 : prev + 1
       );
     }
   };
 
   const prevImage = () => {
-    if (selectedProject && selectedProject.imagenes) {
-      setCurrentImageIndex((prevIndex) => 
-        prevIndex === 0 ? selectedProject.imagenes.length - 1 : prevIndex - 1
+    if (selectedProject?.imagenes) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? selectedProject.imagenes.length - 1 : prev - 1
       );
     }
-  };
-
-  const selectImage = (index) => {
-    setCurrentImageIndex(index);
   };
 
   return (
@@ -125,7 +121,7 @@ const Proyectos = () => {
         onClose={closeModal}
         onNextImage={nextImage}
         onPrevImage={prevImage}
-        onSelectImage={selectImage}
+        onSelectImage={setCurrentImageIndex}
       />
     </section>
   );

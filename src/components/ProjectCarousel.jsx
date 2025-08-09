@@ -4,22 +4,13 @@ import ProjectCard from './ProjectCard';
 const ProjectCarousel = ({ projects, onProjectClick }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % projects.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + projects.length) % projects.length);
-  };
+  const nextSlide = () => setCurrentIndex((prev) => (prev + 1) % projects.length);
+  const prevSlide = () => setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
 
   const getProjectAt = (offset) => {
     const index = (currentIndex + offset + projects.length) % projects.length;
     return projects[index];
   };
-
-  const prev = getProjectAt(-1);
-  const current = getProjectAt(0);
-  const next = getProjectAt(1);
 
   return (
     <div className="relative w-full max-w-6xl mx-auto">
@@ -32,26 +23,9 @@ const ProjectCarousel = ({ projects, onProjectClick }) => {
             WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)'
           }}
         >
-          {/* Proyecto anterior (difuminado) */}
-          <ProjectCard
-            project={prev}
-            small={true}
-            onClick={() => prevSlide()}
-          />
-          
-          {/* Proyecto actual (principal) */}
-          <ProjectCard
-            project={current}
-            small={false}
-            onClick={() => onProjectClick(current)}
-          />
-          
-          {/* Proyecto siguiente (difuminado) */}
-          <ProjectCard
-            project={next}
-            small={true}
-            onClick={() => nextSlide()}
-          />
+          <ProjectCard project={getProjectAt(-1)} small={true} onClick={prevSlide} />
+          <ProjectCard project={getProjectAt(0)} small={false} onClick={() => onProjectClick(getProjectAt(0))} />
+          <ProjectCard project={getProjectAt(1)} small={true} onClick={nextSlide} />
         </div>
       </div>
 
@@ -81,9 +55,7 @@ const ProjectCarousel = ({ projects, onProjectClick }) => {
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={`w-3 h-3 rounded-full transition duration-300 ${
-              index === currentIndex 
-                ? 'bg-blue-500' 
-                : 'bg-white bg-opacity-30 hover:bg-opacity-50'
+              index === currentIndex ? 'bg-blue-500' : 'bg-white bg-opacity-30 hover:bg-opacity-50'
             }`}
           />
         ))}

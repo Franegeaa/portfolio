@@ -11,10 +11,13 @@ const ProjectModal = ({
 }) => {
   if (!isOpen || !project) return null;
 
+  const currentImage = project.imagenes?.[currentImageIndex];
+  const hasMultipleImages = project.imagenes?.length > 1;
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-lg max-w-4xl max-h-[90vh] overflow-hidden relative">
-        {/** Botón cerrar */}
+        {/* Botón cerrar */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 bg-red-500 hover:bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center transition duration-200"
@@ -22,56 +25,56 @@ const ProjectModal = ({
           ×
         </button>
 
-        {/** Título del proyecto */}
+        {/* Título del proyecto */}
         <div className="bg-gray-900 text-white p-4">
           <h3 className="text-xl font-bold">{project.titulo}</h3>
           <p className="text-sm text-gray-300">{project.descripcion}</p>
         </div>
 
-        {/** Contenedor de imagen */}
-        <div className="relative">
-          {project.imagenes && project.imagenes[currentImageIndex] && (
+        {/* Contenedor de imagen */}
+        {currentImage && (
+          <div className="relative">
             <div className="text-center">
               <img
-                src={project.imagenes[currentImageIndex].src}
-                alt={project.imagenes[currentImageIndex].alt}
+                src={currentImage.src}
+                alt={currentImage.alt}
                 className="max-w-full max-h-[60vh] mx-auto object-contain"
               />
               
-              {/** Descripción de la imagen */}
+              {/* Descripción de la imagen */}
               <div className="p-4 bg-gray-50">
                 <p className="text-sm text-gray-700 font-medium">
-                  {project.imagenes[currentImageIndex].descripcion}
+                  {currentImage.descripcion}
                 </p>
               </div>
             </div>
-          )}
 
-          {/** Navegación de imágenes */}
-          {project.imagenes && project.imagenes.length > 1 && (
-            <>
-              <button
-                onClick={onPrevImage}
-                className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white rounded-full p-2 transition duration-200"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                onClick={onNextImage}
-                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white rounded-full p-2 transition duration-200"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </>
-          )}
-        </div>
+            {/* Navegación de imágenes */}
+            {hasMultipleImages && (
+              <>
+                <button
+                  onClick={onPrevImage}
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white rounded-full p-2 transition duration-200"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={onNextImage}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white rounded-full p-2 transition duration-200"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </>
+            )}
+          </div>
+        )}
 
-        {/** Indicadores de imagen */}
-        {project.imagenes && project.imagenes.length > 1 && (
+        {/* Indicadores de imagen */}
+        {hasMultipleImages && (
           <div className="flex justify-center p-4 space-x-2">
             {project.imagenes.map((_, i) => (
               <button
@@ -85,7 +88,7 @@ const ProjectModal = ({
           </div>
         )}
 
-        {/** Tecnologías */}
+        {/* Tecnologías */}
         <div className="p-4 bg-gray-100 border-t">
           <p className="text-sm text-gray-600 mb-2">Tecnologías utilizadas:</p>
           <div className="flex flex-wrap gap-2">

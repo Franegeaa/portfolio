@@ -4,35 +4,34 @@ const ProjectCard = ({ project, small, onClick }) => {
   const handleClick = () => {
     if (small) {
       onClick();
+    } else if (project.tieneModal) {
+      onClick(project);
     } else {
-      // Si es el proyecto con modal, abrirlo; sino abrir GitHub
-      if (project.tieneModal) {
-        onClick(project);
-      } else {
-        window.open(project.enlace, '_blank');
-      }
+      window.open(project.enlace, '_blank');
     }
   };
 
   return (
     <div
-      className={`px-2 transition-all duration-500 ${
+      className={`px-2 transition-all duration-500 cursor-pointer ${
         small
-          ? 'w-1/4 opacity-40 scale-75 blur-sm cursor-pointer'
-          : 'w-1/2 opacity-100 scale-100 z-10 cursor-pointer'
+          ? 'w-1/4 opacity-40 scale-75 blur-sm'
+          : 'w-1/2 opacity-100 scale-100 z-10'
       }`}
       onClick={handleClick}
     >
-      <div className={`relative w-full bg-white rounded-lg shadow-${small ? 'md' : 'xl'} overflow-hidden group`}>
+      <div className={`relative w-full bg-white rounded-lg overflow-hidden group ${
+        small ? 'shadow-md' : 'shadow-xl'
+      }`}>
         <div
           className={`bg-cover bg-center ${small ? 'h-32' : 'h-48'}`}
           style={{ backgroundImage: `url(${project.imagen})` }}
         />
-        <div className={`${small ? 'p-4' : 'p-6'}`}>
-          <h3 className={`${small ? 'text-sm' : 'text-xl'} font-bold mb-1 text-black`}>
+        <div className={small ? 'p-4' : 'p-6'}>
+          <h3 className={`font-bold mb-1 text-black ${small ? 'text-sm' : 'text-xl'}`}>
             {project.titulo}
           </h3>
-          <p className={`${small ? 'text-xs' : 'text-sm'} text-gray-500`}>
+          <p className={`text-gray-500 ${small ? 'text-xs' : 'text-sm'}`}>
             {project.tecnologias.slice(0, small ? 2 : undefined).join(", ")}
           </p>
         </div>
