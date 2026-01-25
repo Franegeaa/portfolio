@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import ProjectCarousel from './ProjectCarousel';
 import ProjectModal from './ProjectModal';
 
@@ -9,6 +10,13 @@ const Proyectos = () => {
 
   // Datos de los proyectos con información real
   const proyectos = [
+    {
+      titulo: "Planificador de Tareas",
+      descripcion: "Aplicación de planificación y priorización de Ordenes de Trabajo para optimizar la productividad diaria, desplegada en Netlify.",
+      tecnologias: ["Python", "Streamlit", "SQLServer"],
+      imagen: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=500&h=300&fit=crop&crop=center",
+      enlace: "https://priorizacion-demo.netlify.app"
+    },
     {
       titulo: "Bot de Control para Planta Industrial",
       descripcion: "Sistema de monitoreo y control de bombeo para planta industrial desarrollado en Node-RED con notificaciones por Telegram.",
@@ -23,7 +31,7 @@ const Proyectos = () => {
           descripcion: "Arquitectura del sistema: conexión Modbus, lectura de sensores y control de bombas"
         },
         {
-          src: "/images/node-red-bot/bot-menu.png", 
+          src: "/images/node-red-bot/bot-menu.png",
           alt: "Interfaz del bot de Telegram mostrando opciones",
           descripcion: "Menú principal del bot: EB Entrada, Laguna 1, Laguna 2, TGBT"
         },
@@ -87,7 +95,7 @@ const Proyectos = () => {
 
   const nextImage = () => {
     if (selectedProject?.imagenes) {
-      setCurrentImageIndex((prev) => 
+      setCurrentImageIndex((prev) =>
         prev === selectedProject.imagenes.length - 1 ? 0 : prev + 1
       );
     }
@@ -95,20 +103,32 @@ const Proyectos = () => {
 
   const prevImage = () => {
     if (selectedProject?.imagenes) {
-      setCurrentImageIndex((prev) => 
+      setCurrentImageIndex((prev) =>
         prev === 0 ? selectedProject.imagenes.length - 1 : prev - 1
       );
     }
   };
 
   return (
-    <section id="proyectos" className="py-20 text-white">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      id="proyectos"
+      className="py-20 text-white relative z-10"
+    >
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-white">
+        <motion.h2
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300"
+        >
           Mis Proyectos
-        </h2>
-        
-        <ProjectCarousel 
+        </motion.h2>
+
+        <ProjectCarousel
           projects={proyectos}
           onProjectClick={handleProjectClick}
         />
@@ -123,7 +143,7 @@ const Proyectos = () => {
         onPrevImage={prevImage}
         onSelectImage={setCurrentImageIndex}
       />
-    </section>
+    </motion.section>
   );
 };
 

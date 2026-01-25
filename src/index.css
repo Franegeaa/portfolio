@@ -1,4 +1,18 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: #0d1117;
+    /* Very dark background to match theme */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
+}
+
+#root {
+    min-height: 100vh;
+}
