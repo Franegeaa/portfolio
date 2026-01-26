@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaDownload } from 'react-icons/fa';
 
 export default function Header() {
   return (
@@ -16,6 +17,17 @@ export default function Header() {
         <p className="text-xl md:text-2xl text-gray-200 font-light tracking-wide">
           Ingeniería en Sistemas <span className="text-blue-400 mx-2">•</span> Desarrollo Web <span className="text-purple-400 mx-2">•</span> Automatización
         </p>
+
+        <div className="mt-8">
+          <a
+            href="/docs/FrancisocEgeaCV(ESP).pdf"
+            download="Francisco_Egea_CV.pdf"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold rounded-full transition-all transform hover:scale-105 shadow-lg border border-white/20"
+          >
+            <FaDownload className="text-lg" />
+            Descargar CV
+          </a>
+        </div>
       </div>
     </motion.section>
   );
