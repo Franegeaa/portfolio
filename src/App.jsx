@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './components/Header.jsx';
 import SobreMi from './components/SobreMii.jsx';
+import Experiencia from './components/Experiencia.jsx';
+import Formacion from './components/Formacion.jsx';
 import Proyectos from './components/Proyectos.jsx';
 import Habilidades from './components/Habilidades.jsx';
 import Contacto from './components/Contacto.jsx';
@@ -31,6 +33,8 @@ export default function App() {
       <div className="relative z-10">
         <Header />
         <SobreMi />
+        <Experiencia />
+        <Formacion />
         <Proyectos />
         <Habilidades />
         <Contacto />

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import ProjectCarousel from './ProjectCarousel';
+import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
 
 const Proyectos = () => {
@@ -47,34 +47,7 @@ const Proyectos = () => {
         }
       ]
     },
-    {
-      titulo: "Plataforma Emprende",
-      descripcion: "Aplicación full-stack para emprendedores con frontend en React y backend completo. Proyecto colaborativo con gestión de usuarios.",
-      tecnologias: ["React", "JavaScript", "Node.js", "Full-Stack"],
-      imagen: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&h=300&fit=crop&crop=center",
-      enlace: "https://github.com/Franegeaa/emprende-frontend"
-    },
-    {
-      titulo: "Sistema de Gestión de Stock",
-      descripcion: "Aplicación completa para control de inventarios con frontend y backend separados. Gestión de productos y stock en tiempo real.",
-      tecnologias: ["JavaScript", "HTML", "CSS", "Full-Stack"],
-      imagen: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?w=500&h=300&fit=crop&crop=center",
-      enlace: "https://github.com/Franegeaa/stock-app"
-    },
-    {
-      titulo: "Proyecto TPI React Deploy",
-      descripcion: "Proyecto colaborativo universitario desarrollado en React con deployment automatizado. Trabajo en equipo con múltiples contribuidores.",
-      tecnologias: ["React", "JavaScript", "CSS", "GitHub Actions"],
-      imagen: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=300&fit=crop&crop=center",
-      enlace: "https://github.com/Franegeaa/react-deploy-tpi"
-    },
-    {
-      titulo: "REST API Deploy",
-      descripcion: "API REST desarrollada en Node.js con deployment en FL0. Backend robusto para aplicaciones web con arquitectura escalable.",
-      tecnologias: ["Node.js", "API", "FL0", "JavaScript"],
-      imagen: "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=500&h=300&fit=crop&crop=center",
-      enlace: "https://github.com/Franegeaa/rest-api-deploy"
-    }
+
   ];
 
   const handleProjectClick = (proyecto) => {
@@ -118,20 +91,32 @@ const Proyectos = () => {
       id="proyectos"
       className="py-20 text-white relative z-10"
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-6xl">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
           className="text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300"
         >
-          Mis Proyectos
+          Proyectos Principales
         </motion.h2>
 
-        <ProjectCarousel
-          projects={proyectos}
-          onProjectClick={handleProjectClick}
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {proyectos.map((proyecto, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.2 }}
+              viewport={{ once: true }}
+            >
+              <ProjectCard
+                project={proyecto}
+                onClick={handleProjectClick}
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
 
       <ProjectModal
