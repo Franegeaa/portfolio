@@ -12,7 +12,7 @@ const Proyectos = () => {
   const proyectos = [
     {
       titulo: "Planificador de Tareas",
-      descripcion: "Aplicación de planificación y priorización de Ordenes de Trabajo para optimizar la productividad diaria, desplegada en Netlify.",
+      descripcion: "Aplicación de planificación y priorización de Ordenes de Trabajo para optimizar la productividad diaria",
       tecnologias: ["Python", "Streamlit", "SQLServer"],
       imagen: "https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=500&h=300&fit=crop&crop=center",
       enlace: "https://priorizacion-demo.netlify.app"
