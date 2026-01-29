@@ -20,7 +20,7 @@ export default function Header() {
 
         <div className="mt-8">
           <a
-            href="/docs/FrancisocEgeaCV(ESP).pdf"
+            href="/docs/FranciscoEgeaCV(ESP).pdf"
             download="Francisco_Egea_CV.pdf"
             className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold rounded-full transition-all transform hover:scale-105 shadow-lg border border-white/20"
           >
