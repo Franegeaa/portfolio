@@ -11,7 +11,7 @@ const proyectos = [
     tecnologias: ['Python', 'Streamlit', 'SQLServer'],
     imagen:
       'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=500&h=300&fit=crop&crop=center',
-    enlace: 'https://priorizacion-demo.netlify.app',
+    enlace: 'https://proyectopriorizacion-demo.streamlit.app',
   },
   {
     titulo: 'Bot de Control para Planta Industrial',
