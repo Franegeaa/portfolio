@@ -8,9 +8,9 @@ import emailjs from '@emailjs/browser';
 // 2. Añadí un servicio de email (Gmail, etc.) → obtenés SERVICE_ID
 // 3. Creá un template con las variables {{from_name}}, {{from_email}}, {{message}} → obtenés TEMPLATE_ID
 // 4. En Account → API Keys → obtenés PUBLIC_KEY
-const EMAILJS_SERVICE_ID = 'TU_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'TU_TEMPLATE_ID';
-const EMAILJS_PUBLIC_KEY = 'TU_PUBLIC_KEY';
+const EMAILJS_SERVICE_ID = 'service_y5sh59q';
+const EMAILJS_TEMPLATE_ID = 'template_nwzm7h2';
+const EMAILJS_PUBLIC_KEY = 'dbpGUjhXRW709dwDQ';
 
 export default function Contacto() {
   const formRef = useRef();
@@ -29,11 +29,12 @@ export default function Contacto() {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         formRef.current,
-        EMAILJS_PUBLIC_KEY
+        { publicKey: EMAILJS_PUBLIC_KEY }
       );
       setStatus('success');
       setForm({ from_name: '', from_email: '', message: '' });
-    } catch {
+    } catch (err) {
+      console.error('EmailJS error:', err);
       setStatus('error');
     }
   };
